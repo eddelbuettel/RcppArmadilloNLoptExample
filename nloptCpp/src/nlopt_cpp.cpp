@@ -2,6 +2,7 @@
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
+// this comes (on Debian/Ubuntu) from libnlopt-cxx-dev
 #include <nlopt.hpp>
 
 using namespace Rcpp;
@@ -53,6 +54,6 @@ Rcpp::List test_nlopt_cpp() {
     x[0] = 1.234;
     x[1] = 5.678;
     double minf;
-    nlopt::result result = opt.optimize(x, minf);
+    /*nlopt::result result =*/ opt.optimize(x, minf);
     return List::create(Named("f") = minf, Named("x") = x);
 }
