@@ -2,7 +2,7 @@
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
-#include <nloptrAPI.h>
+// this comes (on Debian/Ubuntu) from libnlopt-cxx-dev
 #include <nlopt.hpp>
 
 using namespace Rcpp;
@@ -30,7 +30,7 @@ double myvconstraint(const std::vector<double> &x, std::vector<double> &grad, vo
     return ((a*x[0] + b) * (a*x[0] + b) * (a*x[0] + b) - x[1]);
 }
 
-//' A simple example for for NLOPT integration for RcppArmadillo
+//' A simple example for NLOPT integration for RcppArmadillo
 //'
 //' @title NLOPT Integration Example
 //' @return A numeric value
@@ -38,7 +38,7 @@ double myvconstraint(const std::vector<double> &x, std::vector<double> &grad, vo
 //' test_nlopt_cpp()
 //' @export
 // [[Rcpp::export]]
-double test_nlopt_cpp() {
+Rcpp::List test_nlopt_cpp() {
     nlopt::opt opt(nlopt::LD_MMA, 2);
     std::vector<double> lb(2);
     lb[0] = R_NegInf;
@@ -54,8 +54,6 @@ double test_nlopt_cpp() {
     x[0] = 1.234;
     x[1] = 5.678;
     double minf;
-    nlopt::result result = opt.optimize(x, minf);
-    Rcpp::Rcout << int(result) << "\n";
-    Rcpp::Rcout << x[0] << "," << x[1] << "\n";
-    return minf;
+    /*nlopt::result result =*/ opt.optimize(x, minf);
+    return List::create(Named("f") = minf, Named("x") = x);
 }
