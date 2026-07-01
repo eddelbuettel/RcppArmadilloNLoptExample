@@ -1,9 +1,5 @@
-#include "RcppArmadillo.h"
-
-// [[Rcpp::depends(RcppArmadillo)]]
-
-// this comes (on Debian/Ubuntu) from libnlopt-cxx-dev
-#include <nlopt.hpp>
+#include <RcppArmadillo/Lightest> 	// for RcppArmadillo and Rcpp
+#include <nlopt.hpp>				// for NLopt -- on Debian/Ubuntu from libnlopt-cxx-dev
 
 using namespace Rcpp;
 
