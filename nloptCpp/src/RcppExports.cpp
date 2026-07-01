@@ -6,6 +6,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // test_nlopt_cpp
 Rcpp::List test_nlopt_cpp();
 RcppExport SEXP _nloptCpp_test_nlopt_cpp() {
@@ -16,9 +21,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// testRosenbrock
+std::vector<double> testRosenbrock(int n, bool verbose);
+RcppExport SEXP _nloptCpp_testRosenbrock(SEXP nSEXP, SEXP verboseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    rcpp_result_gen = Rcpp::wrap(testRosenbrock(n, verbose));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_nloptCpp_test_nlopt_cpp", (DL_FUNC) &_nloptCpp_test_nlopt_cpp, 0},
+    {"_nloptCpp_testRosenbrock", (DL_FUNC) &_nloptCpp_testRosenbrock, 2},
     {NULL, NULL, 0}
 };
 

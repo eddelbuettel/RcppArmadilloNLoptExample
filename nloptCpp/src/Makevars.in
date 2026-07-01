@@ -1,9 +1,4 @@
 ## We now use configure to find where NLopt is installed on the system
 NLOPT_LIBS = @nlopt_libs@
 PKG_CXXFLAGS = $(SHLIB_OPENMP_CXXFLAGS)
-PKG_LIBS = $(SHLIB_OPENMP_CFLAGS) $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS) $(NLOPT_LIBS)
-
-all: clean
-
-clean:
-	rm -f $(SHLIB) $(OBJECTS)
+PKG_LIBS = $(SHLIB_OPENMP_CXXFLAGS) $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS) $(NLOPT_LIBS)

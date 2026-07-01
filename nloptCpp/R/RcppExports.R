@@ -12,3 +12,20 @@ test_nlopt_cpp <- function() {
     .Call('_nloptCpp_test_nlopt_cpp', PACKAGE = 'nloptCpp')
 }
 
+#' @title NLopt Call Example with n-dimensional Rosenbrock
+#'
+#' @description An n-dimensional Rosenbrock function (i.e. the 'banana' function in 2-d)
+#' is optimized to provide another example for NLopt (more suitable for timing).
+#'
+#' @param n A integer denoting the dimensionality of the problem (in order to make it
+#' expensive enough to measure run-time as n=2 is too fast)
+#' @param verbose A logical flag indicating whether results are printed on convergence
+#'
+#' @return A numeric vector with n elements
+#'
+#' @examples
+#' testRosenbrock(4)
+testRosenbrock <- function(n = 4L, verbose = TRUE) {
+    .Call('_nloptCpp_testRosenbrock', PACKAGE = 'nloptCpp', n, verbose)
+}
+
