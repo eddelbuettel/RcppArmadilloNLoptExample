@@ -1,0 +1,13 @@
+Package: nloptCppTL
+Type: Package
+Title: Testing access to nlopt headers
+Version: 0.1.0
+Author: Julien Chiquet
+Maintainer: Julien Chiquet <julien.chiquet@gmail.com>
+Description: A simple package to test access to nlopt headers and RcppArmadillo. Note that the
+ included header and the linking are provided by system-level nlopt installations.
+License: GPL (>= 2)
+Encoding: UTF-8
+LinkingTo: Rcpp, RcppArmadillo, tl, rspdlite
+Imports: Rcpp, RcppArmadillo, tl
+RoxygenNote: 6.0.1
